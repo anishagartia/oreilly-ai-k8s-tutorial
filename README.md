@@ -252,15 +252,11 @@ Immediately a few things will happen:
 - Pachyderm "knows" that we want it to process any data in `raw_data` with these pipelines, so it will go ahead and spin up these jobs to perform the processing:
 
   ```
-  $ $ pachctl list-job
+  $ pachctl list-job
   ID                               OUTPUT COMMIT                                STARTED            DURATION       RESTART PROGRESS  DL       UL       STATE
   51a94ad5cdc447339e762d1e2f4a61a1 pre_process/a808c5b602f64302a679c7c369593a2a About a minute ago -              0       0 + 0 / 1 0B       0B       running
   ba2f6b00127f484da17353b053b9d0c0 split/778896608e71461db596a93bcf96f7c1       About a minute ago About a minute 0       1 + 0 / 1 2.561MiB 1.026MiB success
   
-  $ pachctl list-job
-  ID                               OUTPUT COMMIT                                STARTED            DURATION       RESTART PROGRESS  DL       UL       STATE
-  51a94ad5cdc447339e762d1e2f4a61a1 pre_process/a808c5b602f64302a679c7c369593a2a About a minute ago About a minute 0       1 + 0 / 1 1.026MiB 1.198MiB success
-  ba2f6b00127f484da17353b053b9d0c0 split/778896608e71461db596a93bcf96f7c1       About a minute ago About a minute 0       1 + 0 / 1 2.561MiB 1.026MiB success
   ```
 
 - Pachyderm also knows that we have input and output data for each of these split and pre-process stages that needs to be stored and versioned. As such, it creates an output data repository for each of the stages and automatically gathers/versions the output data:
